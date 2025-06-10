@@ -99,9 +99,10 @@
         .stat-card.has-tooltip::after {
             content: attr(data-tooltip);
             position: absolute;
-            bottom: -10px;
+            top: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(100%);
+            transform: translateX(-50%);
+            margin-top: 15px;
             background: rgba(30, 41, 59, 0.95);
             color: white;
             padding: 0.8rem 1rem;
@@ -110,22 +111,27 @@
             font-weight: 400;
             text-transform: none;
             letter-spacing: normal;
-            white-space: nowrap;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 1000;
+            z-index: 9999;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             max-width: 280px;
             white-space: normal;
             text-align: left;
             line-height: 1.4;
+            pointer-events: none;
         }
 
         .stat-card.has-tooltip:hover::after {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(calc(100% + 10px));
+            transform: translateX(-50%);
+        }
+
+        .hero-stats {
+            position: relative;
+            z-index: 1;
         }
 
         .section {
