@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Green Newg Deal 💰 | The Newgotiators</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #a855f7, #c084fc, #e879f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.3)); }
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a855f7;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cap-rate-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .cap-rate-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        @media (max-width: 1200px) {
+            .market-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .market-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .market-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .market-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 8px 16px rgba(168, 85, 247, 0.15);
+        }
+
+        .market-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #a855f7;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .property-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .property-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #c084fc);
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.15);
+        }
+
+        .property-address {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .property-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(168, 85, 247, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #a855f7;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 25px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+            transform: translateY(-2px);
+        }
+
+        .hackamore-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .highlight-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .analyst-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .sortable-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sortable-table th {
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+            color: white;
+            padding: 1rem 0.5rem;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            position: relative;
+            font-size: 0.85rem;
+        }
+        
+        .sortable-table th:hover {
+            background: linear-gradient(135deg, #9333ea, #a855f7);
+        }
+        
+        
+        .sortable-table td {
+            padding: 0.8rem 0.5rem;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+            font-size: 0.85rem;
+            color: #1e293b;
+        }
+        
+        .sortable-table tr:hover {
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: rgba(30, 41, 59, 0.6);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(192, 132, 252, 0.1));
+            margin: 4rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(168, 85, 247, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .cap-rate-showcase, .hackamore-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .section h2.section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div style="margin-bottom: 2rem;">
+                <img src="image (9).png" alt="The Newgotiators Logo" style="max-width: 600px; height: auto; margin-bottom: 1rem;">
+            </div>
+            <h1>The Green Newg Deal 💰</h1>
+            <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 1rem; color: #64748b;">
+                Disciplined $5M Investment Strategy with Built-in Capital Reserves
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(168, 85, 247, 0.2);">
+                <h3 style="color: #a855f7; margin-bottom: 0.8rem; font-size: 1.2rem; text-align: center;">🤝 Meet The Newgotiators</h3>
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: #1e293b; font-size: 1.1rem;">AC</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: #1e293b; font-size: 1.1rem;">Elio</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: #1e293b; font-size: 1.1rem;">Bee</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: #1e293b; font-size: 1.1rem;">Mochi</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value">17</div>
+                    <div class="stat-label">Properties</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6.34%</div>
+                    <div class="stat-label">Aggregate Cap Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">10.40%</div>
+                    <div class="stat-label">Weighted IRR</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6.40%</div>
+                    <div class="stat-label">Cash-on-Cash Return</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$4.85M</div>
+                    <div class="stat-label">Total Capital Outlay</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$312K</div>
+                    <div class="stat-label">Annual Cash Flow</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #64748b;">Scroll to explore</div>
+            <div style="font-size: 1.5rem;">↓</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Cap Rate Excellence</h2>
+        <div class="cap-rate-showcase">
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #a855f7;">Industry-Leading Returns</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.8; margin-bottom: 2rem; color: #475569;">
+                    Our carefully curated portfolio delivers an exceptional <strong>6.34% aggregate cap rate</strong> across 17 high-quality properties. 
+                    With individual cap rates ranging from <strong>5.5% to 8.20%</strong>, we've strategically positioned across high-growth markets 
+                    while maintaining a conservative <strong>$4.85M capital deployment</strong> that preserves <strong>$152K in working capital</strong> 
+                    for unforeseen opportunities and expenses.
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: rgba(168, 85, 247, 0.1); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #a855f7;">$312K</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Annual Cash Flow</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(192, 132, 252, 0.1); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #c084fc;">6.40%</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Cash-on-Cash Return</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cap-rate-visual">
+                <canvas id="capRateChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Flagship Property: 2347 Hackamore Drive</h2>
+        <div class="hackamore-showcase">
+            <div>
+                <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.1)); border: 2px solid #fbbf24; border-radius: 20px; padding: 2rem; margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 20px; height: 20px; background: #fbbf24; border-radius: 50%; margin-right: 1rem;"></div>
+                        <h3 style="color: #fbbf24; font-size: 1.5rem; margin: 0;">FLAGSHIP PROPERTY</h3>
+                    </div>
+                    <div style="font-size: 1.1rem; color: #475569; margin-bottom: 1rem;">2347 Hackamore Dr, Atlanta, GA 30349</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: rgba(168, 85, 247, 0.1); border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: 800; color: #a855f7;">8.20%</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Cap Rate</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(192, 132, 252, 0.1); border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: 800; color: #c084fc;">11.87%</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">IRR</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #a855f7;">$1,615</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Monthly Cash Flow</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #c084fc;">$233K</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Total Investment</div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem; font-size: 0.95rem; opacity: 0.7; color: #64748b; text-align: center;">
+                    <strong>Offer:</strong> $208,050 • <strong>Renovation:</strong> $25,000
+                </div>
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <a href="https://app.pickethomes.com/houses/2347-Hackamore-Dr_Atlanta_GA-30349/analyses?beds=min-2_max-4&baths=min-2_max-4&listing_status=inactive&house_types=House%2CTownhouse&filter_set=1&institutional=&max_age_days=360&septic_tank=&selected=1" 
+                       target="_blank" 
+                       style="display: inline-block; padding: 0.7rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; text-transform: uppercase;"
+                       onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 16px rgba(251, 191, 36, 0.4)';"
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">View Full Analysis →</a>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #fbbf24;">Why This Is Our #1 Investment</h3>
+                <div style="space-y: 1rem;">
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>Strong rental comps</strong> - $2,200 current rent with upward mobility to $2,300-$2,400 as area grows</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>Strong comp support</strong> - Solid comparable sales data validating $250-260K ARV</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>Built 2019</strong> - Nearly new construction with modern systems</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>$25K renovation budget</strong> - Cosmetic improvements for maximum ROI</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>Low maintenance</strong> - Small lawn, minimal upkeep required</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6;"><strong>Atlanta suburb growth</strong> - Prime location for appreciation</div>
+                    </div>
+                    <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                        <div style="width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                        <div style="line-height: 1.6; color: #fbbf24;"><strong>UNDER CONTRACT</strong> - Already proving real-world investor demand</div>
+                    </div>
+                </div>
+                <div style="background: rgba(251, 191, 36, 0.1); border-left: 4px solid #fbbf24; padding: 1rem; margin-top: 1.5rem; border-radius: 0 10px 10px 0;">
+                    <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Immediate Forced Appreciation</div>
+                    <div style="font-size: 0.95rem; line-height: 1.5; opacity: 0.9;">ARV of $250-260K supported by strong comps, acquired for $235K total investment ($210K + $25K reno). The 8.20% cap rate is the real hero, with instant equity upside as bonus.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Comprehensive Investment Strategy</h2>
+        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(192, 132, 252, 0.1)); border-radius: 20px; padding: 3rem; margin-bottom: 3rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; text-align: center; margin-bottom: 3rem;">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; color: #a855f7; margin-bottom: 0.5rem;">97.0%</div>
+                    <div style="font-size: 1rem; opacity: 0.7; color: #64748b;">Budget Utilization</div>
+                    <div style="font-size: 0.9rem; opacity: 0.6; color: #64748b; margin-top: 0.5rem;">$4.85M deployed</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; color: #c084fc; margin-bottom: 0.5rem;">$152K</div>
+                    <div style="font-size: 1rem; opacity: 0.7; color: #64748b;">Working Capital</div>
+                    <div style="font-size: 0.9rem; opacity: 0.6; color: #64748b; margin-top: 0.5rem;">3% reserve buffer</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.5rem;">$107K</div>
+                    <div style="font-size: 1rem; opacity: 0.7; color: #64748b;">Total Renovations</div>
+                    <div style="font-size: 0.9rem; opacity: 0.6; color: #64748b; margin-top: 0.5rem;">2.2% of portfolio</div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: #a855f7; margin-bottom: 1.5rem; font-size: 1.4rem;">🎯 Acquisition Strategy</h3>
+                    <div style="space-y: 1rem;">
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Sub-market focus:</strong> Target emerging neighborhoods with strong fundamentals</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Value-add opportunities:</strong> Light renovations for immediate cash flow boost</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Quality focus:</strong> 2000+ built properties with modern systems</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Cap rate targets:</strong> 5.5-8.20% range with 6.34% portfolio average</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: #c084fc; margin-bottom: 1.5rem; font-size: 1.4rem;">🛡️ Risk Management</h3>
+                    <div style="space-y: 1rem;">
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #c084fc; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Geographic diversification:</strong> 5 markets across 4 states</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #c084fc; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Liquidity buffer:</strong> $152K working capital for opportunities & emergencies</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #c084fc; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Conservative leverage:</strong> All-cash purchases eliminate financing risk</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #c084fc; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Due diligence:</strong> Comprehensive market analysis & property inspection</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.7); border-radius: 15px; padding: 2rem;">
+                <h3 style="color: #1e293b; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;">🚀 Growth & Exit Strategy</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #a855f7; margin-bottom: 0.5rem;">10 Years</div>
+                        <div style="font-size: 0.9rem; color: #64748b;">Hold Period Target</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #c084fc; margin-bottom: 0.5rem;">15-25%</div>
+                        <div style="font-size: 0.9rem; color: #64748b;">Target Appreciation</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #fbbf24; margin-bottom: 0.5rem;">10.40%</div>
+                        <div style="font-size: 0.9rem; color: #64748b;">Weighted IRR</div>
+                    </div>
+                </div>
+                <p style="font-size: 1rem; line-height: 1.6; opacity: 0.8; color: #475569; margin-top: 1.5rem; text-align: center;">
+                    Long-term 10-year hold strategy maximizes appreciation and cash flow benefits. Strategic exit timing based on market cycles, 
+                    with option to refinance and hold longer or sell for capital gains. Portfolio positioned for institutional buyer interest.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Market Diversification</h2>
+        <div class="market-grid" id="marketGrid">
+            <!-- Markets will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Property Portfolio</h2>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProperties('all')">All Properties</button>
+            <button class="filter-btn" onclick="filterProperties('Atlanta')">Atlanta</button>
+            <button class="filter-btn" onclick="filterProperties('Nashville')">Nashville</button>
+            <button class="filter-btn" onclick="filterProperties('Charlotte')">Charlotte</button>
+            <button class="filter-btn" onclick="filterProperties('high-cap')">High Cap Rate (7%+)</button>
+            <button class="filter-btn" onclick="filterProperties('safe-secure')">Safe & Secure</button>
+        </div>
+
+        <div class="property-grid" id="propertyGrid">
+            <!-- Properties will be populated by JavaScript -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="togglePortfolio" onclick="togglePortfolioView()" style="
+                padding: 0.8rem 2rem;
+                background: linear-gradient(135deg, #a855f7, #c084fc);
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 0.95rem;
+            ">Show All Properties</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">📊 Phase 2: Westport Tape Analysis</h2>
+        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(192, 132, 252, 0.1)); border-radius: 20px; padding: 3rem; margin-bottom: 3rem;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h3 style="color: #a855f7; margin-bottom: 1rem; font-size: 1.8rem;">⚡ Bulk Underwriting in Action</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #475569; max-width: 800px; margin: 0 auto;">
+                    Our comprehensive analysis of the Phase 2 Westport tape showcased the power and efficiency of bulk underwriting technology, 
+                    while revealing critical insights about market filtering and portfolio optimization.
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: #c084fc; margin-bottom: 1.5rem; font-size: 1.4rem;">📈 Results Summary</h3>
+                    <div style="background: rgba(255, 255, 255, 0.7); border-radius: 15px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+                            <div>
+                                <div style="font-size: 1.8rem; font-weight: 700; color: #a855f7; margin-bottom: 0.5rem;">1</div>
+                                <div style="font-size: 0.9rem; color: #64748b;">Property Selected</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.8rem; font-weight: 700; color: #c084fc; margin-bottom: 0.5rem;">4+</div>
+                                <div style="font-size: 0.9rem; color: #64748b;">School Score Filter</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="space-y: 1rem;">
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>School scores</strong> were the primary elimination factor</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Cap rate requirements</strong> filtered out additional opportunities</div>
+                        </div>
+                        <div style="display: flex; align-items: start; margin-bottom: 1rem;">
+                            <div style="width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 1rem; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                            <div style="line-height: 1.6; color: #475569;"><strong>Property restrictions</strong> eliminated townhomes and flood-prone areas</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: #c084fc; margin-bottom: 1.5rem; font-size: 1.4rem;">🚀 Technology Experience</h3>
+                    <div style="space-y: 1rem;">
+                        <div style="background: rgba(52, 211, 153, 0.1); border-left: 4px solid #34d399; padding: 1rem; border-radius: 0 10px 10px 0; margin-bottom: 1rem;">
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem;">✅ Impressive and Efficient</div>
+                            <div style="font-size: 0.95rem; line-height: 1.5; color: #475569;">Bulk underwriting provided immediate insights and rapid property evaluation capabilities that transformed our analysis workflow.</div>
+                        </div>
+                        <div style="background: rgba(251, 191, 36, 0.1); border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0 10px 10px 0; margin-bottom: 1rem;">
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem;">⚠️ Quality of Life Improvements</div>
+                            <div style="font-size: 0.95rem; line-height: 1.5; color: #475569;">Saving filter states and views would enhance the user experience for complex analysis workflows.</div>
+                        </div>
+                        <div style="background: rgba(96, 165, 250, 0.1); border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0 10px 10px 0;">
+                            <div style="font-weight: 600; color: #2563eb; margin-bottom: 0.5rem;">💡 Overall Assessment</div>
+                            <div style="font-size: 0.95rem; line-height: 1.5; color: #475569;">While the tape results were underwhelming for our specific criteria, the bulk underwriting experience was exceptional and demonstrated clear time-saving benefits.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="cta-section">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1e293b;">📝 Top Feedback</h2>
+            <p style="font-size: 1.1rem; opacity: 0.8; color: #475569; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                During our comprehensive analysis of this investment competition, we identified key insights and potential improvements 
+                that could enhance the platform's usability and analytical capabilities.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.7); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; text-align: left;">
+                <h3 style="color: #a855f7; margin-bottom: 1rem; font-size: 1.3rem;">🔍 Top Finding: Analysis Breakdown Navigation & Consolidation 
+                    <a href="https://linear.app/pickethomes/issue/PH-3900/the-newgotiators-analysis-breakdown-seems-too-tucked-away" target="_blank" 
+                       style="margin-left: 1rem; font-size: 0.9rem; color: #c084fc; text-decoration: none; border: 1px solid #c084fc; padding: 0.2rem 0.6rem; border-radius: 10px; transition: all 0.3s ease;"
+                       onmouseover="this.style.background='#c084fc'; this.style.color='white';"
+                       onmouseout="this.style.background='transparent'; this.style.color='#c084fc';">View Linear Ticket →</a></h3>
+                <p style="font-size: 1rem; line-height: 1.6; color: #475569; margin-bottom: 1.5rem;">
+                    The analysis breakdown feature needs significant improvements in discoverability and navigation. Most users struggle to locate this critical functionality, 
+                    and when they do find it, the colorful charts provide less value than the comprehensive 10-year spreadsheet view. The property detail page suffers from 
+                    fragmentation across multiple tabs that should be consolidated for a more cohesive user experience.
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div>
+                        <h4 style="color: #c084fc; margin-bottom: 0.5rem; font-size: 1.1rem;">Impact Assessment</h4>
+                        <div style="space-y: 0.5rem;">
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Users miss critical analytical insights due to poor navigation</div>
+                            </div>
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Fragmented tabs reduce analytical efficiency</div>
+                            </div>
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Scattered information inhibits comprehensive property evaluation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: #c084fc; margin-bottom: 0.5rem; font-size: 1.1rem;">Recommended Actions</h4>
+                        <div style="space-y: 0.5rem;">
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #059669; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Consolidate Overview, Property Details, and Listing History into unified view</div>
+                            </div>
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #059669; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Improve analysis breakdown discoverability with prominent navigation</div>
+                            </div>
+                            <div style="display: flex; align-items: start; margin-bottom: 0.8rem;">
+                                <div style="width: 6px; height: 6px; background: #059669; border-radius: 50%; margin-right: 0.8rem; margin-top: 0.4rem; flex-shrink: 0;"></div>
+                                <div style="font-size: 0.95rem; color: #64748b; line-height: 1.5;">Prioritize 10-year spreadsheet view over decorative charts for analytical depth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">📊 Hackathon BugBash Analytics</h2>
+        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(192, 132, 252, 0.1)); border-radius: 20px; padding: 3rem; margin-bottom: 3rem;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h3 style="color: #a855f7; margin-bottom: 1rem; font-size: 1.8rem;">🏆 Team Performance Dashboard</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #475569; max-width: 800px; margin: 0 auto 1.5rem auto;">
+                    Comprehensive analytics from the hackathon competition showcasing team engagement, platform usage, and bug discovery efforts.
+                </p>
+                <a href="https://docs.google.com/spreadsheets/d/1W1J5qX-lwq_3w_P8oh-MYpgPr56C9bsHJ_F_y7V_Q78/edit?gid=710462786#gid=710462786" 
+                   target="_blank" 
+                   style="display: inline-block; padding: 0.7rem 1.5rem; background: linear-gradient(135deg, #a855f7, #c084fc); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;"
+                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 16px rgba(168, 85, 247, 0.3)';"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">View Full Analytics →</a>
+            </div>
+            
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: #c084fc; margin-bottom: 1.5rem; font-size: 1.3rem; text-align: center;">📋 Team Summary</h4>
+                <div style="overflow-x: auto;">
+                    <table class="sortable-table" id="teamTable">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('teamTable', 0)">Team</th>
+                                <th onclick="sortTable('teamTable', 1)">Views</th>
+                                <th onclick="sortTable('teamTable', 2)">Saves</th>
+                                <th onclick="sortTable('teamTable', 3)">Archives</th>
+                                <th onclick="sortTable('teamTable', 4)">Underwritten</th>
+                                <th onclick="sortTable('teamTable', 5)">Offers</th>
+                                <th onclick="sortTable('teamTable', 6)">Strategies</th>
+                                <th onclick="sortTable('teamTable', 7)">Data Feeds</th>
+                                <th onclick="sortTable('teamTable', 8)">Imports</th>
+                                <th onclick="sortTable('teamTable', 9)">Sessions</th>
+                                <th onclick="sortTable('teamTable', 10)">Bugs Filed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(168, 85, 247, 0.1); font-weight: 600;">
+                                <td>The Newgotiators</td>
+                                <td>272</td>
+                                <td>31</td>
+                                <td>22</td>
+                                <td>77</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>5</td>
+                                <td>58</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>604</td>
+                                <td>74</td>
+                                <td>14</td>
+                                <td>128</td>
+                                <td>1</td>
+                                <td>14</td>
+                                <td>2</td>
+                                <td>6</td>
+                                <td>76</td>
+                                <td>17</td>
+                            </tr>
+                            <tr>
+                                <td>Exterminators United</td>
+                                <td>294</td>
+                                <td>22</td>
+                                <td>15</td>
+                                <td>114</td>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>59</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>261</td>
+                                <td>33</td>
+                                <td>11</td>
+                                <td>129</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>58</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers by Day, (Code) Breakers by Night</td>
+                                <td>503</td>
+                                <td>41</td>
+                                <td>56</td>
+                                <td>95</td>
+                                <td>0</td>
+                                <td>5</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>54</td>
+                                <td>17</td>
+                            </tr>
+                            <tr>
+                                <td>Nexus Equity Wealth Group (NEWG)</td>
+                                <td>150</td>
+                                <td>25</td>
+                                <td>0</td>
+                                <td>31</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>11</td>
+                                <td>9</td>
+                                <td>49</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Team P0</td>
+                                <td>315</td>
+                                <td>58</td>
+                                <td>10</td>
+                                <td>181</td>
+                                <td>2</td>
+                                <td>7</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>30</td>
+                                <td>61</td>
+                            </tr>
+                            <tr>
+                                <td>BugBusters</td>
+                                <td>148</td>
+                                <td>19</td>
+                                <td>9</td>
+                                <td>62</td>
+                                <td>0</td>
+                                <td>6</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>26</td>
+                                <td>61</td>
+                            </tr>
+                            <tr>
+                                <td>Bounty Hunters</td>
+                                <td>81</td>
+                                <td>12</td>
+                                <td>0</td>
+                                <td>29</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>25</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>The Web Exterminators</td>
+                                <td>54</td>
+                                <td>11</td>
+                                <td>0</td>
+                                <td>12</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>20</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Vandelay Investments</td>
+                                <td>52</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>24</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>19</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>Hidden Gem Finders</td>
+                                <td>49</td>
+                                <td>11</td>
+                                <td>3</td>
+                                <td>23</td>
+                                <td>1</td>
+                                <td>6</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>17</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: #c084fc; margin-bottom: 1.5rem; font-size: 1.3rem; text-align: center;">👥 Individual User Analytics</h4>
+                <div style="overflow-x: auto;">
+                    <table class="sortable-table" id="userTable">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('userTable', 0)">Team</th>
+                                <th onclick="sortTable('userTable', 1)">User</th>
+                                <th onclick="sortTable('userTable', 2)">Views</th>
+                                <th onclick="sortTable('userTable', 3)">Saves</th>
+                                <th onclick="sortTable('userTable', 4)">Archives</th>
+                                <th onclick="sortTable('userTable', 5)">Underwritten</th>
+                                <th onclick="sortTable('userTable', 6)">Offers</th>
+                                <th onclick="sortTable('userTable', 7)">Imported Feeds</th>
+                                <th onclick="sortTable('userTable', 8)">Sessions</th>
+                                <th onclick="sortTable('userTable', 9)">Bugs Filed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(168, 85, 247, 0.15); font-weight: 600;">
+                                <td>The Newgotiators</td>
+                                <td>AC Bryeans</td>
+                                <td>154</td>
+                                <td>21</td>
+                                <td>21</td>
+                                <td>71</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>41</td>
+                                <td>49</td>
+                            </tr>
+                            <tr style="background: rgba(168, 85, 247, 0.08); font-weight: 500;">
+                                <td>The Newgotiators</td>
+                                <td>Mochi Chu</td>
+                                <td>52</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>6</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>11</td>
+                                <td>0</td>
+                            </tr>
+                            <tr style="background: rgba(168, 85, 247, 0.08); font-weight: 500;">
+                                <td>The Newgotiators</td>
+                                <td>Manh++ Luong</td>
+                                <td>47</td>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>0</td>
+                            </tr>
+                            <tr style="background: rgba(168, 85, 247, 0.08); font-weight: 500;">
+                                <td>The Newgotiators</td>
+                                <td>Yen Nguyen</td>
+                                <td>19</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>Zach Ceneviva</td>
+                                <td>200</td>
+                                <td>12</td>
+                                <td>0</td>
+                                <td>17</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>20</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>Aman Gupta </td>
+                                <td>141</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>40</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>Oleksandr Rudyshyn</td>
+                                <td>134</td>
+                                <td>18</td>
+                                <td>13</td>
+                                <td>42</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>26</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>Liana Klumpp</td>
+                                <td>99</td>
+                                <td>37</td>
+                                <td>1</td>
+                                <td>29</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>22</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Wealth Tree Real Estate Group</td>
+                                <td>Aman Gupta</td>
+                                <td>30</td>
+                                <td>7</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Team P0</td>
+                                <td>Mykola K</td>
+                                <td>230</td>
+                                <td>52</td>
+                                <td>8</td>
+                                <td>143</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>20</td>
+                                <td>16</td>
+                            </tr>
+                            <tr>
+                                <td>Team P0</td>
+                                <td>Dmytro Onishchuk</td>
+                                <td>49</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>31</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Team P0</td>
+                                <td>Charlie Mullan</td>
+                                <td>36</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>45</td>
+                            </tr>
+                            <tr>
+                                <td>Team P0</td>
+                                <td>Marek Turski</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers by Day, (Code) Breakers by Night</td>
+                                <td>Mady Bug Bash </td>
+                                <td>241</td>
+                                <td>32</td>
+                                <td>41</td>
+                                <td>45</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>22</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers by Day, (Code) Breakers by Night</td>
+                                <td>Yana Puzzle</td>
+                                <td>115</td>
+                                <td>3</td>
+                                <td>15</td>
+                                <td>32</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>14</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers by Day, (Code) Breakers by Night</td>
+                                <td>hung mg</td>
+                                <td>104</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>18</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>16</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Brokers by Day, (Code) Breakers by Night</td>
+                                <td>Olha Borysovska</td>
+                                <td>43</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>BugBusters</td>
+                                <td>Nazarii Kahaniak</td>
+                                <td>136</td>
+                                <td>13</td>
+                                <td>0</td>
+                                <td>53</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>18</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>BugBusters</td>
+                                <td>Julian Agloro</td>
+                                <td>8</td>
+                                <td>2</td>
+                                <td>9</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>41</td>
+                            </tr>
+                            <tr>
+                                <td>BugBusters</td>
+                                <td>Andrii Zatserkovnyi</td>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>5</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>An Kieu</td>
+                                <td>120</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>41</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>14</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>Leo </td>
+                                <td>48</td>
+                                <td>10</td>
+                                <td>8</td>
+                                <td>34</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>22</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>Toan Dao</td>
+                                <td>46</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>15</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>9</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>Hieu Bug Bash</td>
+                                <td>41</td>
+                                <td>6</td>
+                                <td>0</td>
+                                <td>32</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>9</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>Toan Dao </td>
+                                <td>6</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>7</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Smart Cookies</td>
+                                <td>Toan Dao BB </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Exterminators United</td>
+                                <td>Wasabi Pea </td>
+                                <td>110</td>
+                                <td>9</td>
+                                <td>14</td>
+                                <td>59</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>26</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Exterminators United</td>
+                                <td>Paweł Gulbinowicz</td>
+                                <td>95</td>
+                                <td>10</td>
+                                <td>1</td>
+                                <td>32</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>24</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Exterminators United</td>
+                                <td>Trevor T</td>
+                                <td>89</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>23</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>9</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>Exterminators United</td>
+                                <td>Paweł </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 0.95rem; color: #64748b; font-style: italic;">
+                    ℹ️ Click column headers to sort data. Full detailed analytics available in the linked Google Sheet above.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Table sorting functionality
+        function sortTable(tableId, columnIndex) {
+            const table = document.getElementById(tableId);
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            // Determine if we should sort ascending or descending
+            const isAscending = table.getAttribute('data-sort-direction') !== 'asc';
+            table.setAttribute('data-sort-direction', isAscending ? 'asc' : 'desc');
+            
+            rows.sort((a, b) => {
+                const aValue = a.cells[columnIndex].textContent.trim();
+                const bValue = b.cells[columnIndex].textContent.trim();
+                
+                // Check if values are numbers
+                const aNum = parseFloat(aValue.replace(/,/g, ''));
+                const bNum = parseFloat(bValue.replace(/,/g, ''));
+                
+                if (!isNaN(aNum) && !isNaN(bNum)) {
+                    return isAscending ? aNum - bNum : bNum - aNum;
+                } else {
+                    return isAscending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+                }
+            });
+            
+            // Clear tbody and append sorted rows
+            tbody.innerHTML = '';
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+
+    <script>
+        // Updated portfolio data with safety, school scores, and property URLs
+        const portfolioData = [
+            {address: "1924 Browns Mill Rd SE, Atlanta, GA 30315", market: "Atlanta", capRate: 0.065, irr: 0.101, cashFlow: 1841.99, offerPrice: 323000, renovation: 2000, totalInvestment: 325000, schoolScore: 36, safetyScore: 10, propertyUrl: "https://app.pickethomes.com/houses/1924-Browns-Mill-Rd-Se_Atlanta_GA-30315/overview"},
+            {address: "858 Moray Ln, Clarksville, TN 37043", market: "Nashville", capRate: 0.055, irr: 0.092, cashFlow: 1564.89, offerPrice: 322990.5, renovation: 0, totalInvestment: 322990.5, schoolScore: 91, safetyScore: 65, propertyUrl: "https://app.pickethomes.com/houses/858-Moray-Ln_Clarksville_TN-37043/overview"},
+            {address: "7889 Winkman Dr, Fairburn, GA 30213", market: "Atlanta", capRate: 0.066, irr: 0.103, cashFlow: 1748.84, offerPrice: 312550, renovation: 0, totalInvestment: 312550, schoolScore: 38, safetyScore: 27, propertyUrl: "https://app.pickethomes.com/houses/7889-Winkman-Dr_Fairburn_GA-30213/overview"},
+            {address: "2560 Carolina Rdg, Riverdale, GA 30296", market: "Atlanta", capRate: 0.069, irr: 0.106, cashFlow: 1860.95, offerPrice: 304000, renovation: 15000, totalInvestment: 319000, schoolScore: 36, safetyScore: 32, propertyUrl: "https://app.pickethomes.com/houses/2560-Carolina-Rdg_Riverdale_GA-30296/overview"},
+            {address: "318 Carla Ct, Clarksville, TN 37043", market: "Nashville", capRate: 0.061, irr: 0.098, cashFlow: 1582.21, offerPrice: 303905, renovation: 3000, totalInvestment: 306905, schoolScore: 70, safetyScore: 22, propertyUrl: "https://app.pickethomes.com/houses/318-Carla-Ct_Clarksville_TN-37043/overview"},
+            {address: "656 Emerson Ln, Westmoreland, TN 37186", market: "Nashville", capRate: 0.056, irr: 0.092, cashFlow: 1409.29, offerPrice: 299240.5, renovation: 0, totalInvestment: 299240.5, schoolScore: 64, safetyScore: 30, propertyUrl: "https://app.pickethomes.com/houses/656-Emerson-Ln_Westmoreland_TN-37186/overview"},
+            {address: "3985 Village Blvd NW, Conover, NC 28613", market: "Charlotte", capRate: 0.063, irr: 0.100, cashFlow: 1653.8, offerPrice: 294405, renovation: 10000, totalInvestment: 304405, schoolScore: 54, safetyScore: 79, propertyUrl: "https://app.pickethomes.com/houses/3985-Village-Blvd-Nw_Conover_NC-28613/overview"},
+            {address: "4452 Belcamp Rd, Fairburn, GA 30213", market: "Atlanta", capRate: 0.068, irr: 0.104, cashFlow: 1658.36, offerPrice: 289750, renovation: 0, totalInvestment: 289750, schoolScore: 38, safetyScore: 27, propertyUrl: "https://app.pickethomes.com/houses/4452-Belcamp-Rd_Fairburn_GA-30213/overview"},
+            {address: "8009 SE 5th St, Blue Springs, MO 64014", market: "Kansas City", capRate: 0.065, irr: 0.102, cashFlow: 1556.02, offerPrice: 284990.5, renovation: 2000, totalInvestment: 286990.5, schoolScore: 93, safetyScore: 65, propertyUrl: "https://app.pickethomes.com/houses/8009-Se-5th-St_Blue-Springs_MO-64014/overview"},
+            {address: "700 Emerson Ln, Westmoreland, TN 37186", market: "Nashville", capRate: 0.055, irr: 0.092, cashFlow: 1322.9, offerPrice: 284990.5, renovation: 0, totalInvestment: 284990.5, schoolScore: 64, safetyScore: 30, propertyUrl: "https://app.pickethomes.com/houses/700-Emerson-Ln_Westmoreland_TN-37186/overview"},
+            {address: "649 Emerson Ln, Westmoreland, TN 37186", market: "Nashville", capRate: 0.057, irr: 0.093, cashFlow: 1365.26, offerPrice: 284990.5, renovation: 0, totalInvestment: 284990.5, schoolScore: 64, safetyScore: 30, propertyUrl: "https://app.pickethomes.com/houses/649-Emerson-Ln_Westmoreland_TN-37186/overview"},
+            {address: "100 Deer Xing, Temple, GA 30179", market: "Atlanta", capRate: 0.058, irr: 0.094, cashFlow: 1348.21, offerPrice: 276355, renovation: 0, totalInvestment: 276355, schoolScore: 72, safetyScore: 65, propertyUrl: "https://app.pickethomes.com/houses/100-Deer-Xing_Temple_GA-30179/overview"},
+            {address: "213 Nadia Ct, Locust Grove, GA 30248", market: "Atlanta", capRate: 0.056, irr: 0.092, cashFlow: 1366.74, offerPrice: 258400, renovation: 25000, totalInvestment: 283400, schoolScore: 28, safetyScore: 30, propertyUrl: "https://app.pickethomes.com/houses/213-Nadia-Ct_Locust-Grove_GA-30248/overview"},
+            {address: "138 Creek View Dr, Toccoa, GA 30577", market: "Atlanta", capRate: 0.082, irr: 0.119, cashFlow: 1680.05, offerPrice: 242240.5, renovation: 0, totalInvestment: 242240.5, schoolScore: 69, safetyScore: 43, propertyUrl: "https://app.pickethomes.com/houses/138-Creek-View-Dr_Toccoa_GA-30577/overview"},
+            {address: "1507 Rumstone Ln, Charlotte, NC 28262", market: "Charlotte", capRate: 0.067, irr: 0.103, cashFlow: 1297.78, offerPrice: 239900, renovation: 25000, totalInvestment: 264900, schoolScore: 25, safetyScore: 21, propertyUrl: "https://app.pickethomes.com/houses/1507-Rumstone-Ln_Charlotte_NC-28262/overview"},
+            {address: "82 Choctaw Cir, Franklin, OH 45005", market: "Cincinnati", capRate: 0.059, irr: 0.096, cashFlow: 1169.2, offerPrice: 223155, renovation: 10000, totalInvestment: 233155, schoolScore: 54, safetyScore: 19, propertyUrl: "https://app.pickethomes.com/houses/82-Choctaw-Cir_Franklin_OH-45005/overview"},
+            {address: "2347 Hackamore Dr, Atlanta, GA 30349", market: "Atlanta", capRate: 0.082, irr: 0.119, cashFlow: 1614.62, offerPrice: 208050, renovation: 25000, totalInvestment: 233050, schoolScore: 36, safetyScore: 30, propertyUrl: "https://app.pickethomes.com/houses/2347-Hackamore-Dr_Atlanta_GA-30349/overview"}
+        ];
+
+        // Initialize cap rate chart
+        function initCapRateChart() {
+            const ctx = document.getElementById('capRateChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Properties',
+                        data: portfolioData.map((p) => ({
+                            x: p.capRate * 100,
+                            y: p.irr * 100,
+                            property: p
+                        })),
+                        backgroundColor: 'rgba(168, 85, 247, 0.8)',
+                        borderColor: 'rgba(168, 85, 247, 1)',
+                        borderWidth: 2,
+                        pointRadius: 8,
+                        pointHoverRadius: 12
+                    }, {
+                        label: 'Portfolio Minimum',
+                        data: [{x: 5.5, y: 5}, {x: 5.5, y: 15}],
+                        type: 'line',
+                        borderColor: '#ef4444',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: false,
+                            filter: function(item, chart) {
+                                return item.text !== 'Portfolio Minimum';
+                            }
+                        },
+                        tooltip: {
+                            filter: function(tooltipItem) {
+                                return tooltipItem.datasetIndex === 0; // Only show tooltip for properties dataset
+                            },
+                            callbacks: {
+                                title: () => '',
+                                label: (context) => {
+                                    const prop = context.raw.property;
+                                    return [
+                                        `${prop.address.split(',')[0]}`,
+                                        `Cap Rate: ${(prop.capRate * 100).toFixed(2)}%`,
+                                        `IRR: ${(prop.irr * 100).toFixed(2)}%`,
+                                        `Cash Flow: $${prop.cashFlow.toLocaleString()}/mo`
+                                    ];
+                                }
+                            },
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            titleColor: '#a855f7',
+                            bodyColor: '#1e293b',
+                            borderColor: '#a855f7',
+                            borderWidth: 1
+                        },
+                    },
+                    scales: {
+                        x: {
+                            title: { 
+                                display: true, 
+                                text: 'Cap Rate (%)',
+                                color: '#1e293b'
+                            },
+                            grid: { display: false },
+                            ticks: { color: '#1e293b' },
+                            min: 5.25,
+                            max: 8.5
+                        },
+                        y: {
+                            title: { 
+                                display: true, 
+                                text: 'IRR (%)',
+                                color: '#1e293b'
+                            },
+                            grid: { display: false },
+                            ticks: { color: '#1e293b' },
+                            min: 9,
+                            max: 12
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate market summary
+        function generateMarketSummary() {
+            const markets = {};
+            
+            portfolioData.forEach(property => {
+                if (!markets[property.market]) {
+                    markets[property.market] = {
+                        properties: [],
+                        totalValue: 0,
+                        totalCashFlow: 0
+                    };
+                }
+                markets[property.market].properties.push(property);
+                markets[property.market].totalValue += property.totalInvestment;
+                markets[property.market].totalCashFlow += property.cashFlow;
+            });
+
+            const marketGrid = document.getElementById('marketGrid');
+            if (!marketGrid) {
+                console.error('Market grid element not found');
+                return;
+            }
+            
+            marketGrid.innerHTML = ''; // Clear existing content
+            
+            Object.entries(markets).forEach(([market, data]) => {
+                const avgCapRate = data.properties.reduce((sum, p) => sum + p.capRate, 0) / data.properties.length;
+                const avgIRR = data.properties.reduce((sum, p) => sum + p.irr, 0) / data.properties.length;
+                
+                const marketCard = document.createElement('div');
+                marketCard.className = 'market-card';
+                marketCard.innerHTML = `
+                    <div class="market-name">${market}</div>
+                    <div class="market-stats">
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: 600; color: #a855f7;">${data.properties.length}</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Properties</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: 600; color: #a855f7;">${(avgCapRate * 100).toFixed(2)}%</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Avg Cap Rate</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: 600; color: #c084fc;">${Math.round(data.totalCashFlow).toLocaleString()}</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Monthly CF</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: 600; color: #c084fc;">${(avgIRR * 100).toFixed(2)}%</div>
+                            <div style="font-size: 0.9rem; opacity: 0.7; color: #64748b;">Avg IRR</div>
+                        </div>
+                    </div>
+                `;
+                marketGrid.appendChild(marketCard);
+            });
+        }
+
+        // Generate property cards
+        function generatePropertyCards(properties = portfolioData) {
+            const propertyGrid = document.getElementById('propertyGrid');
+            propertyGrid.innerHTML = '';
+            
+            properties.forEach(property => {
+                const isHackamore = property.address.includes('2347 Hackamore');
+                const isRumstone = property.address.includes('1507 Rumstone');
+                const isEmerson649 = property.address.includes('649 Emerson');
+                const isBlueSprings = property.address.includes('8009 SE 5th St');
+                
+                let badgeHtml = '';
+                if (isHackamore) {
+                    badgeHtml = '<div class="highlight-badge">AC\'s Nomination</div>';
+                } else if (isRumstone) {
+                    badgeHtml = '<div class="analyst-badge">Bee\'s Nomination</div>';
+                } else if (isEmerson649) {
+                    badgeHtml = '<div class="analyst-badge">Elio\'s Nomination</div>';
+                } else if (isBlueSprings) {
+                    badgeHtml = '<div class="analyst-badge">Mochi\'s Nomination</div>';
+                }
+                
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'property-card';
+                propertyCard.innerHTML = `
+                    ${badgeHtml}
+                    <div class="property-address">${property.address}</div>
+                    <div style="color: #c084fc; margin-bottom: 1rem; font-weight: 500;">${property.market} Market</div>
+                    <div class="property-metrics">
+                        <div class="metric">
+                            <div class="metric-value">${(property.capRate * 100).toFixed(2)}%</div>
+                            <div class="metric-label">Cap Rate</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${(property.irr * 100).toFixed(2)}%</div>
+                            <div class="metric-label">IRR</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${property.cashFlow.toLocaleString()}</div>
+                            <div class="metric-label">Monthly CF</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${property.totalInvestment.toLocaleString()}</div>
+                            <div class="metric-label">Total Investment</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; color: #64748b; text-align: center;">
+                        Offer: ${property.offerPrice.toLocaleString()} ${property.renovation > 0 ? `• Reno: ${property.renovation.toLocaleString()}` : ''}
+                    </div>
+                    ${property.propertyUrl ? `
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <a href="${property.propertyUrl}" target="_blank" style="
+                            display: inline-block;
+                            padding: 0.5rem 1rem;
+                            background: linear-gradient(135deg, #a855f7, #c084fc);
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 20px;
+                            font-size: 0.85rem;
+                            font-weight: 600;
+                            transition: all 0.3s ease;
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                        ">View Details →</a>
+                    </div>` : ''}
+                `;
+                propertyGrid.appendChild(propertyCard);
+            });
+        }
+
+        // Filter properties
+        function filterProperties(filter) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            let filteredProperties = portfolioData;
+            
+            switch(filter) {
+                case 'all':
+                    filteredProperties = portfolioData;
+                    break;
+                case 'Atlanta':
+                case 'Nashville':
+                case 'Charlotte':
+                case 'Cincinnati':
+                case 'Kansas City':
+                    filteredProperties = portfolioData.filter(p => p.market === filter);
+                    break;
+                case 'high-cap':
+                    filteredProperties = portfolioData.filter(p => p.capRate >= 0.07);
+                    break;
+                case 'safe-secure':
+                    filteredProperties = portfolioData.filter(p => p.schoolScore >= 60 && p.safetyScore >= 40);
+                    break;
+            }
+            
+            const displayProperties = isPortfolioExpanded ? filteredProperties : filteredProperties.slice(0, 3);
+            generatePropertyCards(displayProperties);
+        }
+
+        // Portfolio expansion state
+        let isPortfolioExpanded = false;
+        
+        // Toggle portfolio view
+        function togglePortfolioView() {
+            const button = document.getElementById('togglePortfolio');
+            isPortfolioExpanded = !isPortfolioExpanded;
+            
+            if (isPortfolioExpanded) {
+                generatePropertyCards(portfolioData);
+                button.textContent = 'Show Less';
+            } else {
+                generatePropertyCards(portfolioData.slice(0, 3));
+                button.textContent = 'Show All Properties';
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initCapRateChart();
+            generateMarketSummary();
+            generatePropertyCards(portfolioData.slice(0, 3));
+            
+            // Handle scroll indicator
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            let hasScrolled = false;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                
+                // Hide indicator after scrolling 100px or reaching bottom
+                if (scrollTop > 100 || scrollTop + windowHeight >= documentHeight - 100) {
+                    scrollIndicator.classList.add('hidden');
+                } else if (scrollTop < 50) {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            });
+            
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>1
