@@ -91,6 +91,43 @@
             color: #64748b;
         }
 
+        .stat-card.has-tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .stat-card.has-tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            background: rgba(30, 41, 59, 0.95);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            max-width: 280px;
+            white-space: normal;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .stat-card.has-tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(calc(100% + 10px));
+        }
+
         .section {
             padding: 5rem 2rem;
             max-width: 1400px;
@@ -439,15 +476,15 @@
                     <div class="stat-value">17</div>
                     <div class="stat-label">Properties</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip" data-tooltip="Total Annual NOI ($312K) ÷ Total Investment ($4.85M) = 6.34%. Weighted by property investment amounts.">
                     <div class="stat-value">6.34%</div>
                     <div class="stat-label">Aggregate Cap Rate</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip" data-tooltip="Investment-weighted average of individual property IRRs. Larger investments have proportionally higher impact on portfolio IRR.">
                     <div class="stat-value">10.40%</div>
                     <div class="stat-label">Weighted IRR</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip" data-tooltip="Annual Cash Flow ($312K) ÷ Total Cash Invested ($4.85M) = 6.34%. Equals cap rate for all-cash purchases.">
                     <div class="stat-value">6.34%</div>
                     <div class="stat-label">Cash-on-Cash Return</div>
                 </div>
